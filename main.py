@@ -8,6 +8,13 @@ app = Flask(__name__)
 app.register_blueprint(api_bp)
 
 
+
+@app.route("/null_test")
+def null_test():
+  return "<html><body>NULL(\u0000)</body></html>"
+
+
+
 @app.get("/")
 def read_root():
     return """
@@ -93,6 +100,11 @@ def read_root():
                     <h3>Sample Data</h3>
                     <p>Access sample JSON data through our REST API. Perfect for testing and development purposes.</p>
                     <a href="/api/data">Get Data →</a>
+                </div>
+                <div class="card">
+                    <h3>Null Character Test</h3>
+                    <p>Test the handling of null characters.</p>
+                    <a href="/null_test">Test →</a>
                 </div>
             </div>
         </main>
